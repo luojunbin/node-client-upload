@@ -1,0 +1,29 @@
+{
+  "name": "node-client-upload",
+  "version": "1.0.0",
+  "description": "Use node js as the client for file upload",
+  "main": "lib/upload.js",
+  "scripts": {
+    "build": "./node_modules/babel-cli/bin/babel.js src --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luojunbin/node-client-upload.git"
+  },
+  "keywords": [
+    "node post file",
+    "upload file",
+    "nodejs client",
+    "upload"
+  ],
+  "author": "luojunbin (lqwcwsse@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luojunbin/node-client-upload/issues"
+  },
+  "homepage": "https://github.com/luojunbin/node-client-upload#readme",
+  "devDependencies": {
+    "babel-cli": "^6.16.0"
+  }
+}

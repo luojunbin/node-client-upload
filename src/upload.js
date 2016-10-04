@@ -70,3 +70,5 @@ function upload(url, filePath, data, callback) {
     formData.forEach(v => req.write(v));
     req.end();
 }
+
+module.exports = upload;

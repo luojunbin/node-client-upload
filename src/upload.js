@@ -30,13 +30,23 @@ function getOptions(url, headers) {
 }
 
 function getFormData(data, filePath, boundary) {
-    let content = fs.readFileSync(path.join(__dirname, filePath));
+
+    let content;
+    let filename;
+
+    if (typeof filePath === 'object') {
+        filename = filePath.filename;
+        content = filePath.content;
+    } else {
+        filename = path.basename(filePath);
+        content = fs.readFileSync(filePath);
+    }
 
     let dataFormate = Object.keys(data).reduce((prev, key) => [...prev, ...item(key, data[key], boundary)], []);
 
     return [
         ...dataFormate,
-        ...item(`file"; filename="${path.basename(filePath)}`, content, boundary),
+        ...item(`file"; filename="${filename}`, content, boundary),
         `${dash}${boundary}${dash}${crlf}`
     ];
 }
@@ -69,6 +79,10 @@ function upload(url, filePath, data, callback) {
     req.on('error', e => console.log(`problem with request: ${e.message}`));
     formData.forEach(v => req.write(v));
     req.end();
+}
+
+function uploadContent(argument) {
+    // body...
 }
 
 module.exports = upload;

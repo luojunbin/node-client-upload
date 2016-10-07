@@ -1,6 +1,6 @@
 {
   "name": "node-client-upload",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Use node js as the client for file upload",
   "main": "lib/upload.js",
   "scripts": {

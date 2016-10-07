@@ -10,7 +10,7 @@
 ### upload(receiverUrl, filePath, formData, callback);
 
 第一个参数是 receiver 的地址;   
-第二个参数是要上传的文件的本地路径;   
+第二个参数是可以是一个包含 `filename` 和 `content` 的对象 或 将要上传的文件的本地路径;    
 第三个参数是表单数据, 为了与 receiver 配合, 一般需要填写一个 `to` 属性指定上传到哪个远端的路径下;   
 第四个参数是回调函数;
 
@@ -22,4 +22,16 @@ upload('http://10.10.10.10:8765/receiver.php', 'test.png', {
 }, function (res, body) {
     console.log(res, body);
 });
+
+upload('http://10.10.10.10:8765/receiver.php', {
+    filename: 'test.js',
+    // content 参数的类型可以是 String 或者 Buffer
+    content: '// this is test.js'
+},
+{
+    to: '/home/users/username/www/static/test.png'
+}, function (res, body) {
+    console.log(res, body);
+});
+
 ```
